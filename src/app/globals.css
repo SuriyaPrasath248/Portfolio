@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* Dark-first tokens; light variant follows the OS. */
+:root {
+  --bg: #0b0b0c;
+  --bg-elev: #121214;
+  --line: #222225;
+  --line-strong: #303034;
+  --fg: #ececec;
+  --fg-2: #a6a6ab;
+  --fg-3: #6f6f75;
+  --accent: #8ab4f8;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafaf8;
+    --bg-elev: #ffffff;
+    --line: #e7e7e3;
+    --line-strong: #d3d3ce;
+    --fg: #141416;
+    --fg-2: #57575d;
+    --fg-3: #8c8c92;
+    --accent: #1d5fd1;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elev: var(--bg-elev);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-fg-3: var(--fg-3);
+  --color-accent: var(--accent);
+
+  --font-display: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Scroll reveal — driven by <Reveal/> */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.55s var(--ease-out-soft),
+    transform 0.55s var(--ease-out-soft);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
