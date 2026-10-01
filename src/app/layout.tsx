@@ -30,13 +30,7 @@ export const metadata: Metadata = {
     description: site.description,
     creator: site.links.xHandle,
   },
-  icons: {
-    icon:
-      "data:image/svg+xml," +
-      encodeURIComponent(
-        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#8b7bff"/><stop offset="1" stop-color="#3ee6ff"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="#06060a"/><circle cx="32" cy="32" r="14" fill="none" stroke="url(#g)" stroke-width="5"/></svg>`,
-      ),
-  },
+  // Icons come from the file convention: app/icon.png, app/apple-icon.png, app/favicon.ico
 };
 
 export const viewport: Viewport = { themeColor: "#06060a", colorScheme: "dark" };

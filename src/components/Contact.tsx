@@ -12,10 +12,10 @@ const socials = [
 export default function Contact() {
   return (
     <section id="contact" className="relative isolate overflow-hidden py-24 sm:py-32">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/15 blur-[140px]" />
+      <div className="breathe pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/15 blur-[140px]" />
       <div className="mx-auto max-w-[1180px] px-5 text-center sm:px-8 lg:px-12">
         <Reveal>
-          <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-cyan">Contact</p>
+          <p className="font-serif text-[1.2rem] italic leading-none text-cyan">Contact</p>
           <h2 className="text-balance mx-auto mt-4 max-w-[18ch] text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em]">
             Hiring for <span className="text-gradient font-serif font-normal italic">AI engineering</span>? Let&apos;s talk.
           </h2>

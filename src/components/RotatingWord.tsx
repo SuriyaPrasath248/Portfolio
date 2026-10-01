@@ -9,13 +9,15 @@ export default function RotatingWord({ words }: { words: string[] }) {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let n = 0;
     const id = window.setInterval(() => {
       setShow(false);
+      n = (n + 1) % words.length;
       window.setTimeout(() => {
-        setI((n) => (n + 1) % words.length);
+        setI(n);
         setShow(true);
       }, 280);
-    }, 2400);
+    }, 3200);
     return () => window.clearInterval(id);
   }, [words.length]);
 

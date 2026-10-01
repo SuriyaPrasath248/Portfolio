@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { pipeline } from "@/content/site";
+import Reveal from "./Reveal";
 
 // Interactive system map: four lanes of the NeoRecruit pipeline. Selecting a
 // node explains what that stage does. Connectors carry an animated signal.
@@ -13,10 +14,10 @@ export default function Pipeline() {
       {pipeline.map((lane, li) => {
         const active = lane.nodes.find((n) => sel.lane === lane.id && sel.node === n.id);
         return (
-          <div key={lane.id} className="glow-card p-4 sm:p-5">
+          <Reveal key={lane.id} delay={li * 90} className="glow-card p-4 sm:p-5">
             <div className="grid gap-4 lg:grid-cols-[150px_minmax(0,1fr)] lg:items-center">
-              <p className="font-mono text-[11.5px] uppercase tracking-[0.14em] text-fg-3">
-                <span className="mr-2 text-violet">0{li + 1}</span>
+              <p className="text-[14px] font-medium text-fg-2">
+                <span className="mr-2 font-serif text-[1.1rem] italic text-violet">0{li + 1}</span>
                 {lane.title}
               </p>
 
@@ -24,7 +25,7 @@ export default function Pipeline() {
                 {lane.nodes.map((n, i) => {
                   const on = sel.lane === lane.id && sel.node === n.id;
                   return (
-                    <li key={n.id} className="flex flex-col items-stretch sm:flex-1 sm:flex-row sm:items-center">
+                    <li key={n.id} style={{ ["--i" as string]: i }} className="stagger-item flex flex-col items-stretch sm:flex-1 sm:flex-row sm:items-center">
                       <button
                         type="button"
                         onClick={() => setSel({ lane: lane.id, node: n.id })}
@@ -36,7 +37,7 @@ export default function Pipeline() {
                         }`}
                       >
                         <span className="block text-[14px] font-medium leading-tight">{n.label}</span>
-                        <span className="mt-0.5 block truncate font-mono text-[11px] text-fg-3">{n.sub}</span>
+                        <span className="mt-0.5 block truncate text-[12px] text-fg-3">{n.sub}</span>
                       </button>
                       {i < lane.nodes.length - 1 && (
                         <svg className="mx-auto h-6 w-4 shrink-0 sm:h-4 sm:w-10" viewBox="0 0 40 16" preserveAspectRatio="none" aria-hidden="true">
@@ -64,10 +65,10 @@ export default function Pipeline() {
                 )}
               </div>
             </div>
-          </div>
+          </Reveal>
         );
       })}
-      <p className="pl-1 font-mono text-[11.5px] text-fg-3">Tap any stage to see what it does.</p>
+      <p className="pl-1 text-[13px] text-fg-3">Tap any stage to see what it does.</p>
     </div>
   );
 }

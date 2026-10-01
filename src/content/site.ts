@@ -23,11 +23,11 @@ export const hero = {
   headlineA: "I build AI that",
   rotating: ["listens.", "talks back.", "watches.", "judges fairly."],
   lede:
-    "Three years as the sole engineer of an AI interviewer that real hiring teams use. Speech, conversation, voice, vision and evaluation, working together in real time.",
+    "4+ years building software; the last three spent engineering and leading the core AI of an interviewer that real hiring teams rely on, where speech, language, vision and evaluation reason together in real time.",
   facts: [
-    { value: "3+", label: "years shipping AI to production" },
-    { value: "1", label: "engineer, end to end" },
-    { value: "~90%", label: "less manual screening in pilots" },
+    { value: "4+", label: "years of experience" },
+    { value: "4", label: "AI pipelines in production" },
+    { value: "5", label: "interview languages" },
   ],
 };
 
@@ -97,38 +97,25 @@ export const pipeline: PipelineLane[] = [
 export type Highlight = {
   title: string;
   body: string;
-  visual: "wave" | "chunks" | "face" | "timer" | "schema";
+  visual: "match" | "schema" | "face";
   span?: "wide" | "tall";
 };
 
 export const highlights: Highlight[] = [
   {
-    title: "Stopped speech-to-text from inventing answers",
-    body: "Speech models can hallucinate words from silence. Every answer is now checked for real speech before it is transcribed, so a muted mic produces a prompt to retry, not a fake transcript.",
-    visual: "wave",
-    span: "wide",
+    title: "Semantic CV matching",
+    body: "Hundreds of CVs ranked against a job by meaning, not keywords, so the right people reach the interview.",
+    visual: "match",
   },
   {
-    title: "Structured LLM scoring",
-    body: "Recruiter criteria become a strict output format, so every metric comes back as a number with reasoning. Easy to compare, hard to drift.",
+    title: "Structured scoring",
+    body: "Each recruiter criterion comes back as a score with reasoning, not free text.",
     visual: "schema",
-    span: "tall",
   },
   {
-    title: "Vision proctoring on-device",
-    body: "Integrity checks run in the candidate's browser, with no video uploaded for analysis.",
+    title: "On-device proctoring",
+    body: "Integrity checks run in the browser. No video is uploaded for analysis.",
     visual: "face",
-  },
-  {
-    title: "Avatars that outlive their session",
-    body: "Interviews run longer than a single avatar session lasts, so sessions hand off seamlessly between sentences.",
-    visual: "timer",
-  },
-  {
-    title: "Recording that survives a crash",
-    body: "Interview video is captured in resilient chunks with retries and stitched back together on the server, even across page reloads.",
-    visual: "chunks",
-    span: "wide",
   },
 ];
 
@@ -138,16 +125,40 @@ export const stack = [
   "Python", "TypeScript", "React", "Next.js", "Serverless cloud",
 ];
 
-export type XrProject = { title: string; image: string; href: string; tag: string };
+export type XrProject = { title: string; image: string; href: string; tag: string; summary: string; tags: string[] };
 
 // Earlier career, kept short on purpose.
 export const xrProjects: XrProject[] = [
-  { title: "Kochi Metro Rail VR", image: "/images/km.webp", href: "https://www.youtube.com/watch?v=e3R1MZmnR-w", tag: "Best Booth, 15th UMI" },
-  { title: "Kochi Water Metro VR", image: "/images/wm.webp", href: "https://www.youtube.com/watch?v=ITmuylA6ypc", tag: "KMRL" },
-  { title: "Airport Logistics", image: "/images/atvr.webp", href: "https://drive.google.com/file/d/1Hxz0xkzJ5mI2Y1n9TxmHIabys5ufx8QQ/view", tag: "4× faster training" },
-  { title: "Federal Bank Gold Testing", image: "/images/fb.webp", href: "https://drive.google.com/file/d/1SMDjeqQj4UlSI-T0Iged9mvKXSRXUUFg/view", tag: "Banking" },
-  { title: "Faulty Wire Tracing", image: "/images/fw.webp", href: "https://drive.google.com/file/d/1I_oOc0Wpujjc5qLqiRyOlo3Ph4766b0q/view", tag: "AR · IoT twin" },
-  { title: "Virtual Tourism", image: "/images/vt.webp", href: "https://drive.google.com/file/d/1qcrnDiVZe_6Izs8CDKLxCfD8Tc4YZxFV/view", tag: "Photogrammetry" },
+  {
+    title: "Kochi Metro Rail VR", image: "/images/km.webp", href: "https://www.youtube.com/watch?v=e3R1MZmnR-w", tag: "Best Booth, 15th UMI",
+    summary: "Station walkthrough simulation for KMRL, shown to the Governor of Kerala and awarded Best Booth at the 15th Urban Mobility India conference.",
+    tags: ["Unity", "OpenXR", "360° video"],
+  },
+  {
+    title: "Kochi Water Metro VR", image: "/images/wm.webp", href: "https://www.youtube.com/watch?v=ITmuylA6ypc", tag: "KMRL",
+    summary: "Companion simulation of the water-metro terminals for the same KMRL showcase.",
+    tags: ["Unity", "OpenXR", "Simulation"],
+  },
+  {
+    title: "Airport Logistics", image: "/images/atvr.webp", href: "https://drive.google.com/file/d/1Hxz0xkzJ5mI2Y1n9TxmHIabys5ufx8QQ/view", tag: "4× faster training",
+    summary: "VR onboarding for ground operations. Reported 75% better retention and 4× faster training than the classroom version.",
+    tags: ["Unity", "VR training", "Aviation"],
+  },
+  {
+    title: "Federal Bank Gold Testing", image: "/images/fb.webp", href: "https://drive.google.com/file/d/1SMDjeqQj4UlSI-T0Iged9mvKXSRXUUFg/view", tag: "Banking",
+    summary: "Procedure training for branch staff: the chemical checks used to verify gold, rebuilt as a hands-on VR module.",
+    tags: ["Unity", "VR training", "Banking"],
+  },
+  {
+    title: "Faulty Wire Tracing", image: "/images/fw.webp", href: "https://drive.google.com/file/d/1I_oOc0Wpujjc5qLqiRyOlo3Ph4766b0q/view", tag: "AR · IoT twin",
+    summary: "Digital twin of a vehicle harness that traces a faulty wire through the real chassis in AR, driven by IoT sensor data.",
+    tags: ["AR", "Digital twin", "IoT"],
+  },
+  {
+    title: "Virtual Tourism", image: "/images/vt.webp", href: "https://drive.google.com/file/d/1qcrnDiVZe_6Izs8CDKLxCfD8Tc4YZxFV/view", tag: "Photogrammetry",
+    summary: "Photogrammetry-scanned monuments you can walk through in VR.",
+    tags: ["Photogrammetry", "VR", "3D"],
+  },
 ];
 
 export const caseLink = {
@@ -157,13 +168,17 @@ export const caseLink = {
 
 export const roles = [
   {
+    year: "2023",
+    tags: ["AI systems", "LLMs", "Speech", "Vision", "Leadership"],
     when: "Jul 2023 — now",
     title: "Software Developer → Technical Lead",
     org: "NeoRecruit.AI",
-    where: "Coimbatore",
+    where: "Remote",
     body: "Sole engineer on an AI hiring platform: AI interviews, speech, vision proctoring, CV matching and the infrastructure underneath. Took it from prototype to a product used by hiring teams.",
   },
   {
+    year: "2022",
+    tags: ["Unity", "XR", "Simulation"],
     when: "Nov 2022 — Jul 2023",
     title: "Unity XR Developer",
     org: "XR Horizon",
@@ -171,9 +186,11 @@ export const roles = [
     body: "Industrial and transport VR simulations for KMRL, Britco and Federal Bank.",
   },
   {
+    year: "2021",
+    tags: ["Unity", "Mobile VR", "AR"],
     when: "Sep 2021 — Oct 2022",
-    title: "Unity Developer, Intern",
-    org: "GrahasVR · Nandha Infotech",
+    title: "Junior Unity Developer",
+    org: "GrahasVR",
     where: "Remote",
     body: "Mobile VR safety training and educational AR.",
   },
@@ -186,7 +203,7 @@ export const education = {
 };
 
 export const recognition = [
-  { title: "Smart India Hackathon 2022", body: "National finalist." },
-  { title: "Best Booth, 15th Urban Mobility Conference", body: "KMRL VR simulation." },
-  { title: "WorldSkills 2021", body: "Wild-card entrant, 3D Game Art; later trained BRICS and WorldSkills medallists." },
-];
+  { title: "Smart India Hackathon", year: "2022", icon: "trophy", body: "National finalist in India's largest government-run hackathon." },
+  { title: "Best Booth, Urban Mobility India", year: "2022", icon: "award", body: "Awarded at the 15th UMI conference for the KMRL VR simulation." },
+  { title: "WorldSkills India", year: "2021", icon: "medal", body: "Wild-card entrant in 3D Game Art; later trained BRICS and WorldSkills medallists." },
+] as const;
