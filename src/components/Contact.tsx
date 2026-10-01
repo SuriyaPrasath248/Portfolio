@@ -1,7 +1,7 @@
 import { site } from "@/content/site";
 import Reveal from "./Reveal";
 import CopyEmail from "./CopyEmail";
-import { ArrowUpRight } from "./icons";
+import { ArrowUpRight, Mail } from "./icons";
 
 const socials = [
   { label: "GitHub", href: site.links.github },
@@ -11,37 +11,33 @@ const socials = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="border-t border-line py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto max-w-[1040px] px-5 sm:px-8 lg:px-12">
+    <section id="contact" className="relative isolate overflow-hidden py-24 sm:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/15 blur-[140px]" />
+      <div className="mx-auto max-w-[1180px] px-5 text-center sm:px-8 lg:px-12">
         <Reveal>
-          <p className="font-mono text-[12px] uppercase tracking-[0.08em] text-fg-3">Contact</p>
-          <h2 className="font-display text-balance mt-2.5 max-w-[16ch] text-[clamp(2.2rem,5vw,3.6rem)] leading-[1.05] tracking-[-0.015em]">
-            Building something with real-time media or AI? Say hello.
+          <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-cyan">Contact</p>
+          <h2 className="text-balance mx-auto mt-4 max-w-[18ch] text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[1.02] tracking-[-0.04em]">
+            Hiring for <span className="text-gradient font-serif font-normal italic">AI engineering</span>? Let&apos;s talk.
           </h2>
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a
               href={`mailto:${site.email}`}
-              className="border-b border-line-strong pb-0.5 font-mono text-[clamp(15px,2.2vw,18px)] transition-colors hover:border-fg"
+              className="inline-flex h-12 items-center gap-2 rounded-full bg-fg px-6 text-[15px] font-medium text-bg transition-transform hover:scale-[1.02]"
             >
-              {site.email}
+              <Mail /> {site.email}
             </a>
             <CopyEmail email={site.email} />
           </div>
         </Reveal>
 
         <Reveal delay={140}>
-          <ul className="mt-7 flex gap-5 text-[14.5px]">
+          <ul className="mt-8 flex justify-center gap-6 text-[14.5px]">
             {socials.map((s) => (
               <li key={s.label}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-fg-2 transition-colors hover:text-fg"
-                >
+                <a href={s.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-fg-2 transition-colors hover:text-fg">
                   {s.label} <ArrowUpRight className="h-[12px] w-[12px]" />
                 </a>
               </li>

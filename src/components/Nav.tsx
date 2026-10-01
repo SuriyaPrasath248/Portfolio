@@ -1,29 +1,31 @@
-import { site } from "@/content/site";
+import Link from "next/link";
 
 const links = [
-  { href: "#work", label: "Work" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "/neorecruit/", label: "NeoRecruit" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-md backdrop-saturate-150">
-      <div className="mx-auto flex h-[60px] max-w-[1040px] items-center justify-between px-4 sm:px-8 lg:px-12">
-        <a href="#top" className="font-display text-[1.1rem] tracking-[-0.01em] sm:text-[1.25rem]">
-          {site.name.split(" ")[0]} {site.name.split(" ")[1]}
-        </a>
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="mx-auto mt-3 flex h-[52px] max-w-[1180px] items-center justify-between mx-3 rounded-full border border-line/80 bg-bg/60 px-4 backdrop-blur-xl backdrop-saturate-150 sm:mx-6 sm:px-5 xl:mx-auto">
+        <Link href="/" className="flex items-center gap-2 text-[15px] font-medium tracking-[-0.01em]">
+          <span className="relative grid h-6 w-6 place-items-center">
+            <span className="absolute inset-0 rounded-full bg-[conic-gradient(from_180deg,var(--violet),var(--cyan),var(--violet))] opacity-90" />
+            <span className="absolute inset-[3px] rounded-full bg-bg" />
+            <span className="relative h-1.5 w-1.5 rounded-full bg-cyan" />
+          </span>
+          <span className="hidden sm:inline">Suriya Prasath</span>
+        </Link>
         <nav aria-label="Primary">
-          <ul className="flex gap-4 sm:gap-7">
+          <ul className="flex items-center gap-3.5 sm:gap-6">
             {links.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="group relative py-1.5 text-[13px] text-fg-2 transition-colors hover:text-fg sm:text-[14px]"
-                >
+                <Link href={l.href} className="text-[13px] text-fg-2 transition-colors hover:text-fg sm:text-[14px]">
                   {l.label}
-                  <span className="absolute inset-x-0 bottom-0.5 h-px origin-left scale-x-0 bg-fg transition-transform duration-250 ease-out group-hover:scale-x-100" />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

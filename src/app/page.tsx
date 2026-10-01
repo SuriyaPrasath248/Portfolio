@@ -1,20 +1,24 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import CaseStudy from "@/components/CaseStudy";
-import ProjectGrid from "@/components/ProjectGrid";
+import StackMarquee from "@/components/StackMarquee";
+import Featured from "@/components/Featured";
+import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import GlowTracker from "@/components/GlowTracker";
 
 export default function Home() {
   return (
     <>
+      <GlowTracker />
       <Nav />
       <main>
         <Hero />
-        <CaseStudy />
-        <ProjectGrid />
+        <StackMarquee />
+        <Featured />
         <Experience />
+        <Projects />
         <Contact />
       </main>
       <Footer />
