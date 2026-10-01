@@ -8,13 +8,13 @@ import Reveal from "@/components/Reveal";
 import Pipeline from "@/components/Pipeline";
 import Highlights from "@/components/Highlights";
 import NeuralField from "@/components/NeuralField";
-import { ArrowLeft, Folder, Play } from "@/components/icons";
+import { ArrowLeft, Play } from "@/components/icons";
 import { caseLink, site, stack } from "@/content/site";
 
 export const metadata: Metadata = {
   title: `NeoRecruit.AI — case study · ${site.name}`,
   description:
-    "How I built NeoRecruit.AI: an AI interviewer with speech-to-text, LLM follow-ups, a real-time avatar, browser-side vision proctoring and structured LLM scoring.",
+    "How I built NeoRecruit.AI: an AI interviewer that screens CVs, runs live spoken interviews through a real-time avatar, proctors on-device and scores against the recruiter's own criteria.",
 };
 
 const meta = [
@@ -115,8 +115,8 @@ export default function NeoRecruitPage() {
                 Four AI pipelines, one product.
               </h2>
               <p className="text-pretty mt-3 max-w-[62ch] text-[15.5px] leading-relaxed text-fg-2">
-                Two React apps, about fifty Cloud Functions and Python services on Cloud Run, and a multi-tenant Firestore
-                layer with TOTP MFA and role-based access.
+                A recruiter dashboard, a candidate interview app and a serverless backend, multi-tenant and secured with
+                MFA and role-based access.
               </p>
             </Reveal>
             <div className="mt-10">
@@ -162,11 +162,11 @@ export default function NeoRecruitPage() {
               >
                 <div className="flex items-center gap-3">
                   <span className="grid h-11 w-11 place-items-center rounded-xl border border-line-strong bg-bg/60 text-cyan">
-                    <Folder className="h-5 w-5" />
+                    <Play className="h-5 w-5" />
                   </span>
                   <div>
                     <p className="font-medium">Product walkthrough</p>
-                    <p className="font-mono text-[11.5px] text-fg-3">Google Drive · videos &amp; screenshots</p>
+                    <p className="font-mono text-[11.5px] text-fg-3">Video · Google Drive</p>
                   </div>
                 </div>
                 <p className="inline-flex items-center gap-2 text-[15px] text-fg transition-colors group-hover:text-cyan">

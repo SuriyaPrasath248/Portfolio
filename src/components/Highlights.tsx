@@ -29,19 +29,15 @@ function Schema() {
   return (
     <pre className="overflow-hidden rounded-xl border border-line bg-bg/70 p-4 font-mono text-[11.5px] leading-[1.7] text-fg-2">
 {`{
-  "name": "score_candidate",
-  "parameters": {
-    "type": "object",
-    "properties": {
-      `}<span className="text-cyan">{`"communication"`}</span>{`: {
-        "type": `}<span className="text-violet">{`"number"`}</span>{`,
-        "description": "…criteria"
-      },
-      `}<span className="text-cyan">{`"problem_solving"`}</span>{`: { … },
-      `}<span className="text-cyan">{`"role_fit"`}</span>{`: { … }
-    },
-    "required": [ … all metrics ]
-  }
+  `}<span className="text-cyan">{`"communication"`}</span>{`: {
+    "score": `}<span className="text-violet">8</span>{`,
+    "reasoning": "…"
+  },
+  `}<span className="text-cyan">{`"problem_solving"`}</span>{`: {
+    "score": `}<span className="text-violet">7</span>{`,
+    "reasoning": "…"
+  },
+  `}<span className="text-cyan">{`"role_fit"`}</span>{`: { … }
 }`}
     </pre>
   );
@@ -78,19 +74,16 @@ function Timer() {
   return (
     <div className="flex h-36 items-center justify-center gap-6">
       <div className="relative h-28 w-28">
-        <div className="absolute inset-0 rounded-full bg-[conic-gradient(var(--cyan)_0deg,var(--violet)_306deg,var(--line)_306deg)] [mask:radial-gradient(farthest-side,transparent_calc(100%-6px),#000_calc(100%-5px))]" />
+        <div className="absolute inset-0 rounded-full bg-[conic-gradient(var(--cyan)_0deg,var(--violet)_300deg,var(--line)_300deg)] [mask:radial-gradient(farthest-side,transparent_calc(100%-6px),#000_calc(100%-5px))]" />
         <div className="absolute inset-0 grid place-items-center text-center">
-          <div>
-            <p className="text-[1.4rem] font-semibold tracking-[-0.02em]">17:00</p>
-            <p className="font-mono text-[10px] text-fg-3">hot-swap</p>
-          </div>
+          <p className="font-mono text-[11px] text-fg-2">hand-off</p>
         </div>
       </div>
       <ul className="space-y-1.5 font-mono text-[11px] text-fg-2">
-        <li><span className="text-fg-3">00:00</span> session A</li>
-        <li><span className="text-cyan">17:00</span> B warms up</li>
-        <li><span className="text-violet">17:0x</span> swap after sentence</li>
-        <li><span className="text-fg-3">20:00</span> A would expire</li>
+        <li><span className="text-fg-3">●</span> session A speaking</li>
+        <li><span className="text-cyan">●</span> session B warms up</li>
+        <li><span className="text-violet">●</span> swap between sentences</li>
+        <li><span className="text-fg-3">●</span> candidate notices nothing</li>
       </ul>
     </div>
   );
@@ -109,9 +102,9 @@ function Chunks() {
         ))}
       </div>
       <div className="flex items-center gap-3 font-mono text-[11px] text-fg-3">
-        <span>5-min slices · retry ×3</span>
+        <span>chunked · retried</span>
         <span className="h-px flex-1 bg-gradient-to-r from-line-strong to-cyan/60" />
-        <span className="rounded-md border border-cyan/40 bg-cyan/10 px-2 py-1 text-cyan">FFmpeg merge → interview.webm</span>
+        <span className="rounded-md border border-cyan/40 bg-cyan/10 px-2 py-1 text-cyan">merged → final video</span>
       </div>
     </div>
   );

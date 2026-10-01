@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import StackMarquee from "@/components/StackMarquee";
 import Featured from "@/components/Featured";
+import HomeHighlights from "@/components/HomeHighlights";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <StackMarquee />
         <Featured />
+        <HomeHighlights />
         <Experience />
         <Projects />
         <Contact />

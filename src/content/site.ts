@@ -8,7 +8,7 @@ export const site = {
   url: "https://suriyaprasath248.github.io/Portfolio/",
   location: "Coimbatore, India",
   description:
-    "AI engineer building real-time AI systems in production: voice interviews with LLMs, speech pipelines, computer-vision proctoring and semantic CV matching. Sole engineer on NeoRecruit.AI.",
+    "AI engineer building real-time AI systems in production: AI interviews, speech, computer vision and semantic matching. Sole engineer on NeoRecruit.AI.",
   email: "m.s.prasath5818@gmail.com",
   links: {
     github: "https://github.com/SuriyaPrasath248",
@@ -23,22 +23,22 @@ export const hero = {
   headlineA: "I build AI that",
   rotating: ["listens.", "talks back.", "watches.", "judges fairly."],
   lede:
-    "Three years as the sole engineer of an AI interviewer that real hiring teams use. Speech-to-text, LLM conversation, voice and avatar, in-browser vision and structured LLM scoring, wired together in real time.",
+    "Three years as the sole engineer of an AI interviewer that real hiring teams use. Speech, conversation, voice, vision and evaluation, working together in real time.",
   facts: [
     { value: "3+", label: "years shipping AI to production" },
-    { value: "50+", label: "cloud functions I run" },
+    { value: "1", label: "engineer, end to end" },
     { value: "~90%", label: "less manual screening in pilots" },
   ],
 };
 
-// One real interview turn, as it appears in production logs (latencies rounded).
+// One interview turn, replayed as a log tail. Deliberately generic.
 export const liveTurn = [
-  { t: "00.00", tag: "mic", text: "answer recorded · 0.33 MB · peak RMS 0.21 ✓ speech" },
-  { t: "01.09", tag: "stt", text: "whisper + deepgram → transcript (1.1 s)" },
-  { t: "02.62", tag: "llm", text: "follow-up question generated (1.2 s)" },
-  { t: "03.00", tag: "tts", text: "voice synthesised (0.38 s)" },
-  { t: "03.10", tag: "avatar", text: "streaming to avatar · lip-sync" },
-  { t: "∞", tag: "vision", text: "face / person / gaze checks running in browser" },
+  { t: "00.0", tag: "mic", text: "answer captured · speech detected ✓" },
+  { t: "01.1", tag: "stt", text: "speech → text" },
+  { t: "02.6", tag: "llm", text: "follow-up question generated" },
+  { t: "03.0", tag: "tts", text: "reply voiced" },
+  { t: "03.1", tag: "avatar", text: "avatar responds in real time" },
+  { t: "∞", tag: "vision", text: "integrity checks running on-device" },
 ];
 
 export type PipelineNode = {
@@ -59,37 +59,37 @@ export const pipeline: PipelineLane[] = [
     id: "screen",
     title: "Screening",
     nodes: [
-      { id: "cv", label: "CV upload", sub: "bulk PDF / DOCX", detail: "Recruiters drop hundreds of CVs at once. Files are parsed into structured profiles on Cloud Run." },
-      { id: "embed", label: "Embed", sub: "OpenAI embeddings", detail: "Each CV and the job description become vectors, so matching is semantic rather than keyword overlap." },
-      { id: "vec", label: "Vector search", sub: "Pinecone", detail: "Candidates are ranked against the role by similarity, then shortlisted for the AI interview." },
+      { id: "cv", label: "CV upload", sub: "bulk", detail: "Recruiters upload CVs in bulk; each is parsed into a structured profile." },
+      { id: "embed", label: "Understand", sub: "semantic", detail: "CVs and the job description are compared by meaning, not by keyword overlap." },
+      { id: "vec", label: "Rank", sub: "shortlist", detail: "Candidates are ranked against the role and the best are invited to the AI interview." },
     ],
   },
   {
     id: "interview",
     title: "Live interview",
     nodes: [
-      { id: "mic", label: "Mic", sub: "WebAudio meter", detail: "A loudness meter gates silent or dead-mic recordings before they reach speech-to-text, because STT models invent words on silence." },
-      { id: "stt", label: "Speech → text", sub: "Whisper + Deepgram", detail: "Two transcribers run together: one for clean text, one raw for auditing what was actually said." },
-      { id: "llm", label: "LLM", sub: "GPT follow-ups", detail: "The model sees the job, the CV and the whole conversation and asks the next question, in the recruiter's language." },
-      { id: "voice", label: "Voice + avatar", sub: "TTS · WebRTC", detail: "Replies are synthesised and streamed to a real-time avatar, with sessions rotated before the provider's 20-minute expiry." },
+      { id: "mic", label: "Listen", sub: "silence guard", detail: "Silent or dead-mic recordings are caught before transcription, so the system never invents an answer the candidate didn't give." },
+      { id: "stt", label: "Transcribe", sub: "speech → text", detail: "Spoken answers become text quickly enough to keep the conversation natural." },
+      { id: "llm", label: "Reason", sub: "follow-ups", detail: "The model knows the job, the CV and the conversation so far, and asks the next question in the recruiter's language." },
+      { id: "voice", label: "Respond", sub: "voice + avatar", detail: "Replies are voiced and delivered through a real-time avatar for a face-to-face feel." },
     ],
   },
   {
     id: "integrity",
     title: "Integrity",
     nodes: [
-      { id: "cam", label: "Camera", sub: "browser only", detail: "No video leaves the device for proctoring. Everything runs locally in the candidate's browser." },
-      { id: "vision", label: "Vision models", sub: "MediaPipe", detail: "Face and person detection on an adaptive cycle, plus iris-based gaze tracking with calibration." },
-      { id: "flags", label: "Risk score", sub: "violations log", detail: "Tab switches, extra people, extra monitors and missing faces roll up into a reviewable risk score." },
+      { id: "cam", label: "Camera", sub: "on-device", detail: "Proctoring runs in the candidate's browser. Nothing is uploaded for analysis." },
+      { id: "vision", label: "Vision", sub: "on-device models", detail: "Checks for missing faces, extra people and where the candidate is looking." },
+      { id: "flags", label: "Report", sub: "risk score", detail: "Signals roll up into a risk score a recruiter can review." },
     ],
   },
   {
     id: "eval",
     title: "Evaluation",
     nodes: [
-      { id: "schema", label: "Criteria → schema", sub: "function calling", detail: "The recruiter's own scoring criteria become a function-calling schema, so scores come back typed, not parsed from prose." },
-      { id: "score", label: "Scores", sub: "per metric", detail: "Each metric gets a numeric score and written reasoning grounded in the transcript." },
-      { id: "aicheck", label: "AI-answer check", sub: "second LLM pass", detail: "A second pass estimates how likely the answers were generated by an AI rather than the candidate." },
+      { id: "schema", label: "Criteria", sub: "recruiter-defined", detail: "Each hiring team defines its own scoring criteria." },
+      { id: "score", label: "Score", sub: "structured", detail: "The transcript is scored per criterion with written reasoning, returned as structured data rather than free text." },
+      { id: "aicheck", label: "Authenticity", sub: "second pass", detail: "A second pass flags answers that look AI-generated rather than the candidate's own." },
     ],
   },
 ];
@@ -104,38 +104,38 @@ export type Highlight = {
 export const highlights: Highlight[] = [
   {
     title: "Stopped speech-to-text from inventing answers",
-    body: "Candidates with a muted mic were getting transcript lines they never said. A WebAudio analyser now meters every take and blocks silence before transcription.",
+    body: "Speech models can hallucinate words from silence. Every answer is now checked for real speech before it is transcribed, so a muted mic produces a prompt to retry, not a fake transcript.",
     visual: "wave",
     span: "wide",
   },
   {
     title: "Structured LLM scoring",
-    body: "Recruiter criteria compile into a function-calling schema at submit time, so every metric comes back as a typed number with reasoning.",
+    body: "Recruiter criteria become a strict output format, so every metric comes back as a number with reasoning. Easy to compare, hard to drift.",
     visual: "schema",
     span: "tall",
   },
   {
-    title: "Vision proctoring in the browser",
-    body: "Face, person and gaze models run client-side on an adaptive cycle. Nothing is uploaded for analysis.",
+    title: "Vision proctoring on-device",
+    body: "Integrity checks run in the candidate's browser, with no video uploaded for analysis.",
     visual: "face",
   },
   {
     title: "Avatars that outlive their session",
-    body: "Provider sessions expire at ~20 minutes; interviews run to 50. Sessions hot-swap on a 17-minute schedule, between sentences.",
+    body: "Interviews run longer than a single avatar session lasts, so sessions hand off seamlessly between sentences.",
     visual: "timer",
   },
   {
     title: "Recording that survives a crash",
-    body: "Avatar and mic mixed into one track, uploaded in chunks with retry, then merged and re-encoded across sessions with FFmpeg on Cloud Run.",
+    body: "Interview video is captured in resilient chunks with retries and stitched back together on the server, even across page reloads.",
     visual: "chunks",
     span: "wide",
   },
 ];
 
+// Kept deliberately high-level: capabilities, not vendors.
 export const stack = [
-  "OpenAI", "Whisper", "Deepgram", "Function calling", "Embeddings", "Pinecone",
-  "MediaPipe", "WebRTC", "WebAudio", "FFmpeg", "Python", "Node.js",
-  "React", "Next.js", "Firebase", "Cloud Run", "Firestore", "TypeScript",
+  "LLMs", "Speech AI", "Computer vision", "Semantic search", "Real-time media",
+  "Python", "TypeScript", "React", "Next.js", "Serverless cloud",
 ];
 
 export type XrProject = { title: string; image: string; href: string; tag: string };
@@ -151,8 +151,8 @@ export const xrProjects: XrProject[] = [
 ];
 
 export const caseLink = {
-  href: "https://drive.google.com/drive/folders/1dkLr_a_FP6tSRGLgea1pSVbjhJiK-xN6?usp=sharing",
-  label: "Product walkthrough",
+  href: "https://drive.google.com/file/d/182ktzJ09cAHHLcVS0OFF6HDJstgC2zp0/view?usp=sharing",
+  label: "Watch the product walkthrough",
 };
 
 export const roles = [
@@ -161,7 +161,7 @@ export const roles = [
     title: "Software Developer → Technical Lead",
     org: "NeoRecruit.AI",
     where: "Coimbatore",
-    body: "Sole engineer on an AI hiring platform: LLM interviews, speech, vision proctoring, CV matching and the cloud underneath. Led the move from a Unity WebGL prototype to the React product.",
+    body: "Sole engineer on an AI hiring platform: AI interviews, speech, vision proctoring, CV matching and the infrastructure underneath. Took it from prototype to a product used by hiring teams.",
   },
   {
     when: "Nov 2022 — Jul 2023",
