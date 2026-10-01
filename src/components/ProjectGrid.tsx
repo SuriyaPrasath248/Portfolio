@@ -25,7 +25,7 @@ export default function ProjectGrid() {
               >
                 <figure className="m-0 aspect-[16/10] overflow-hidden rounded-[10px] border border-line bg-elev transition-colors group-hover:border-line-strong">
                   <Image
-                    src={p.image}
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH}${p.image}`}
                     alt={p.title}
                     width={1600}
                     height={1000}
